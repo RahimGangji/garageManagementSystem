@@ -63,12 +63,14 @@ public class ProductDashboard extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(addProduct)) {
             // Handle result button action
+            new AddProduct();
+            dispose();
 
         } else if (e.getSource().equals(back)) {
             new Dashboard();
             dispose();
         } else if (e.getSource().equals(viewProduct)) {
-            // new OopPaperSet();
+          new viewProduct();
             dispose();
         }
     }
