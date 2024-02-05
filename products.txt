@@ -1,2 +1,2 @@
-22 rahim 44 12
-23 tr 66 8
+1 chinese 40 2
+3 rahim 45 6

@@ -7,11 +7,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
-public class ProductDashboard extends JFrame implements ActionListener {
-    JButton addProduct, back, viewProduct;
+public class CustomerDashboard extends JFrame implements ActionListener {
+    JButton addCustomer, back, viewCustomer;
     JLabel welcomeDashboardTeacher, error;
 
-    public ProductDashboard() {
+    CustomerDashboard() {
         setVisible(true);
         setTitle("Product Dashboard");
         setSize(900, 500);
@@ -19,19 +19,19 @@ public class ProductDashboard extends JFrame implements ActionListener {
         setResizable(false);
         setBackground(Color.white);
 
-        welcomeDashboardTeacher = new JLabel("Welcome To Product Dashboard");
+        welcomeDashboardTeacher = new JLabel("Welcome To Customer Dashboard");
         welcomeDashboardTeacher.setBounds(180, 0, 600, 200);
         welcomeDashboardTeacher.setFont(new Font("Anton", Font.BOLD, 35));
         welcomeDashboardTeacher.setForeground(Color.black);
         add(welcomeDashboardTeacher);
 
-        addProduct = new JButton("Add Product");
-        addProduct.setBounds(40, 150, 250, 50);
-        addProduct.setFont(new Font("Josefin Sans", Font.BOLD, 28));
-        addProduct.setForeground(Color.white);
-        addProduct.setBackground(Color.black);
-        addProduct.setFocusable(false);
-        add(addProduct);
+        addCustomer = new JButton("Add Customer");
+        addCustomer.setBounds(40, 150, 250, 50);
+        addCustomer.setFont(new Font("Josefin Sans", Font.BOLD, 28));
+        addCustomer.setForeground(Color.white);
+        addCustomer.setBackground(Color.black);
+        addCustomer.setFocusable(false);
+        add(addCustomer);
 
         back = new JButton("Back");
         back.setBounds(300, 150, 250, 50);
@@ -41,23 +41,28 @@ public class ProductDashboard extends JFrame implements ActionListener {
         back.setFocusable(false);
         add(back);
 
-        viewProduct = new JButton("View Product");
-        viewProduct.setBounds(560, 150, 250, 50);
-        viewProduct.setFont(new Font("Josefin Sans", Font.BOLD, 28));
-        viewProduct.setForeground(Color.white);
-        viewProduct.setBackground(Color.black);
-        viewProduct.setFocusable(false);
-        add(viewProduct);
+        viewCustomer = new JButton("Customers");
+        viewCustomer.setBounds(560, 150, 250, 50);
+        viewCustomer.setFont(new Font("Josefin Sans", Font.BOLD, 28));
+        viewCustomer.setForeground(Color.white);
+        viewCustomer.setBackground(Color.black);
+        viewCustomer.setFocusable(false);
+        add(viewCustomer);
 
-        addProduct.addActionListener(this);
+        addCustomer.addActionListener(this);
         back.addActionListener(this);
-        viewProduct.addActionListener(this);
+        viewCustomer.addActionListener(this);
 
         error = new JLabel();
         error.setBounds(250, 400, 400, 30); // Set the bounds of the error label
         error.setForeground(Color.RED);
         error.setFont(new Font("Josefin Sans", Font.BOLD, 18));
         add(error);
+    }
+
+    private boolean isCustomerAvailable() {
+        File file = new File("customer.txt");
+        return file.exists() && file.length() > 0;
     }
 
     private boolean isProductsFileAvailable() {
@@ -67,22 +72,24 @@ public class ProductDashboard extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(addProduct)) {
+        if (e.getSource().equals(addCustomer)) {
             // Handle result button action
-            new AddProduct();
-            dispose();
-
-        } else if (e.getSource().equals(back)) {
-            new Dashboard();
-            dispose();
-        } else if (e.getSource().equals(viewProduct)) {
             if (isProductsFileAvailable()) {
-                new viewProduct();
+                new addCustomer();
                 dispose();
             } else {
                 error.setText("Products file not available or empty.");
             }
+        } else if (e.getSource().equals(back)) {
+            new Dashboard();
+            dispose();
+        } else if (e.getSource().equals(viewCustomer)) {
+            if (isCustomerAvailable()) {
+                // new viewProduct();
+                // dispose();
+            } else {
+                error.setText("Customer file not available or empty.");
+            }
         }
     }
-
 }

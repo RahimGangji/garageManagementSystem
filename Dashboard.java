@@ -78,7 +78,7 @@ public class Dashboard extends JFrame implements ActionListener {
             new LoginMenu();
             dispose();
         } else if (e.getSource().equals(customber)) {
-            // new OopPaperSet();
+            new CustomerDashboard();
             dispose();
         } else if (e.getSource().equals(product)) {
             new ProductDashboard();
