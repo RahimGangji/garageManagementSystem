@@ -61,7 +61,7 @@ public class CustomerDashboard extends JFrame implements ActionListener {
     }
 
     private boolean isCustomerAvailable() {
-        File file = new File("customer.txt");
+        File file = new File("customers.txt");
         return file.exists() && file.length() > 0;
     }
 
@@ -85,8 +85,8 @@ public class CustomerDashboard extends JFrame implements ActionListener {
             dispose();
         } else if (e.getSource().equals(viewCustomer)) {
             if (isCustomerAvailable()) {
-                // new viewProduct();
-                // dispose();
+                new viewCustomer();
+                dispose();
             } else {
                 error.setText("Customer file not available or empty.");
             }

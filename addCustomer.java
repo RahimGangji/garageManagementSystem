@@ -208,6 +208,7 @@ public class addCustomer extends JFrame implements ActionListener {
             }
         } else if (e.getSource().equals(backButton)) {
             new CustomerDashboard();
+            dispose();
         }
     }
 

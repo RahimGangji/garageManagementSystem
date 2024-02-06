@@ -73,7 +73,7 @@ public class Dashboard extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(monthlySale)) {
             // Handle result button action
-
+            new montlySale();
         } else if (e.getSource().equals(back)) {
             new LoginMenu();
             dispose();
